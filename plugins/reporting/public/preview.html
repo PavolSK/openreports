@@ -108,14 +108,21 @@
 				obj.type = 'string';
 				obj.width = 200;
 
-				if (col.format != null)
+				if (col.format && (col.type === 'number' || col.type === 'date'))
 					obj.format = col.format;
 
 				switch (col.type) {
 					case 'boolean':
+						obj.type = col.type;
+						obj.width = 120;
+						break;
 					case 'number':
 						obj.type = col.type;
 						obj.width = 120;
+						if (obj.format)
+							obj.format = +obj.format;
+						if (isNaN(obj.format))
+							delete obj.format;
 						break;
 					case 'date':
 						obj.type = col.type;

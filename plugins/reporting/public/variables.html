@@ -36,8 +36,10 @@
 				if (m.datatype === 'date') {
 					let value = m.value.split(';').trim();
 					for (let i = 0; i < value.length; i++) {
-						let dt = value[i].parseDate('yyyy-MM-dd HH:mm');
-						value[i] = dt.toUTC().format('yyyy-MM-dd HH:mm');
+						if (value[i].includes(':')) {
+							let dt = value[i].parseDate('yyyy-MM-dd HH:mm');
+							value[i] = dt.toUTC().format('yyyy-MM-dd HH:mm');
+						}
 					}
 					m.value = value.join(';');
 				}

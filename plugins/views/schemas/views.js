@@ -25,7 +25,7 @@ NEWACTION('views_read', {
 
 NEWACTION('views_save', {
 	name: 'Create view',
-	input: '*id, *name, *sql, fields:[output, *column, *name, *type, format:number, group:boolean]',
+	input: '*id, *name, *sql, fields:[output, *column, *name, *type, format, group:boolean]',
 	permissions: 'views',
 	action: function($, model) {
 
